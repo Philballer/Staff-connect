@@ -1,0 +1,17 @@
+.host {
+  background-color: var(--dark-body-03);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  outline: 0;
+}
+
+i {
+  font-size: x-large;
+  font-weight: 900;
+}
+
+i:hover {
+  cursor: pointer;
+}

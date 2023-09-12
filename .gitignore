@@ -1,0 +1,6 @@
+node_modules
+
+client/.angular/cache
+client/.coverage
+
+.vscode

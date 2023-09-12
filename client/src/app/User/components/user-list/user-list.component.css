@@ -1,0 +1,10 @@
+.add-btn {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.add-btn:hover {
+  background-color: var(--primary-hover);
+  border: 1px solid var(--primary-hover);
+  transition: all 0.5s;
+}

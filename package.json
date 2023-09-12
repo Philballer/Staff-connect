@@ -1,0 +1,17 @@
+{
+  "name": "users-list-full-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:client": "cd client && yarn start",
+    "start:server": "cd backend && yarn start:dev",
+    "start:full-stack": "concurrently -n 'server,client' \"yarn start:server\" \"yarn start:client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

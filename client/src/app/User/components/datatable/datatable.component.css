@@ -1,0 +1,71 @@
+.header-container {
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  background-color: var(--primary);
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.user-border {
+  border: 5px solid var(--primary);
+  border-radius: 10px;
+}
+
+.column-width {
+  width: 20%;
+}
+
+.user-item {
+  background-color: var(--dark-body-03);
+}
+
+.user-item:hover {
+  background-color: var(--dark-body-01);
+  transition: all 1s;
+  /* cursor: pointer; */
+}
+.delete-icon {
+  color: #5bc0de;
+}
+
+.delete-icon:hover {
+  color: #ccf1fd;
+  cursor: pointer;
+}
+
+th {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+td {
+  padding: 20px;
+}
+
+tr {
+  background-color: var(--dark-body-03);
+  border-bottom: 10px solid var(--dark-body-02);
+}
+
+tr:hover {
+  border-left: 4px solid var(--primary);
+  /* border-right: 3px solid var(--primary); */
+  background-color: var(--dark-body-01);
+  transition: all 0.6s;
+}
+
+tr:nth-child(1) {
+  border-bottom: 12px solid var(--dark-body-02);
+}
+
+tr:nth-child(1):hover {
+  background-color: var(--primary);
+}
+
+.footer {
+  border: 1px solid var(--dark-body-05);
+  background-color: var(--dark-body-05);
+  border-radius: 10px;
+}

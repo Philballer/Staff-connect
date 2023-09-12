@@ -1,0 +1,29 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  --primary: #3f51b5;
+  --primary-hover: #2a3ca5;
+  --dark-body-01: #3f404d;
+  --dark-body-02: #40414f;
+  --dark-body-03: #565869;
+  --dark-body-04: #41414c;
+  --dark-body-05: #373744;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--dark-body-02);
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.user-image {
+  border-radius: 50%;
+}
+.user-image-big {
+  width: 250px;
+  border-radius: 50%;
+}

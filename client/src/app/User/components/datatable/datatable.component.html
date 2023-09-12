@@ -1,0 +1,37 @@
+<table class="text-light w-100">
+  <tr class="header-container mb-3">
+    <th></th>
+    <th *ngFor="let cell of headers">{{ cell }}</th>
+    <th></th>
+  </tr>
+
+  <tr *ngFor="let user of data; let i = index" class="">
+    <td (click)="userClick(user)" class="clickable">
+      <img src="{{ user.avatar }}" alt="{{ user.username }}" />
+    </td>
+
+    <td (click)="userClick(user)" class="clickable">
+      {{ user.firstName }} {{ user.lastName }}
+    </td>
+    <td (click)="userClick(user)" class="clickable">
+      {{ user.email }}
+    </td>
+    <td (click)="userClick(user)" class="clickable">
+      {{ user.gender }}
+    </td>
+    <td (click)="userClick(user)" class="clickable">
+      {{ readableBirthdays[i] }} ({{ ages[i] }} Years)
+    </td>
+    <td (click)="userClick(user)" class="clickable">{{ user.nationality }}</td>
+    <td>
+      <i
+        (click)="deleteUser(user)"
+        class="fa-regular fa-trash-can delete-icon"
+      ></i>
+    </td>
+  </tr>
+</table>
+
+<div id="footer" class="d-flex justify-content-center text-light">
+  <p class="footer p-2 w-25 text-center">Footer for pagination</p>
+</div>

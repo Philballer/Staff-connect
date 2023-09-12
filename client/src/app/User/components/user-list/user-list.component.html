@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="d-flex justify-content-end mb-5">
+    <button class="btn btn-dark add-btn" (click)="onAddUser()">
+      Add
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+
+  <app-datatable
+    [headers]="tableHeaders"
+    [data]="users"
+    (onUserClick)="onUserClick($event)"
+    (onDelete)="onUserDelete($event)"
+  ></app-datatable>
+</div>
