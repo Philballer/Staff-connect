@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller()
-export class AppController {}
+export class AppController {
+  @Get()
+  getHome(): string {
+    return 'Wrong usage of the endpoint access http://localhost:5000/users for our users database';
+  }
+}

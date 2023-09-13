@@ -6,7 +6,8 @@
   "scripts": {
     "start:client": "cd client && yarn start",
     "start:server": "cd backend && yarn start:dev",
-    "start:full-stack": "concurrently -n 'server,client' \"yarn start:server\" \"yarn start:client\""
+    "start:full-stack": "concurrently -n 'backend,client' \"yarn start:server\" \"yarn start:client\"",
+    "setup": "concurrently -n 'backend,client' \"cd backend && npm install\" \"cd client && npm install\""
   },
   "keywords": [],
   "author": "",
