@@ -1,7 +1,6 @@
-
 ### This app implements all CRUD functions and has other interesting features like pagination, NGRX, state management and many more.
 
-# Note: Develop is our main development branch and only confirmed pull-requests would be merged to this branch.
+## Note: Develop is our main development branch and only confirmed pull-requests would be merged to this branch.
 
 Stack
 Frontend: Angular.js
@@ -14,9 +13,13 @@ Run the following scripts to have your workplace setup
 - Download docker-desktop if you aren't using a Linux system.
   https://www.docker.com/products/docker-desktop/
 
-- npm run setup:new (clone the repo and never worked with angular, installs angular cli globally).
+- npm run setup:new or yarn setup:new (you cloned the repo and have never worked with angular, installs angular cli globally).
 
-- npm run setup (recommended every time you create a new branch or clone the repo)
+- npm run setup or yarn setup (recommended every time you create a new branch or clone the repo)
+
+-npm run start:client to run the frontend, your backend should already be running on port 5000 after the setup script
+
+Note: Always create a new branch from the develop branch.
 
 ### Before Pushing and Merging.
 
@@ -28,7 +31,7 @@ Run the following scripts to have your workplace setup
 
 ### Extensive Install Guide (Not Recommended)
 
-# How to setup your Front end environment:
+#### How to setup your Front end environment:
 
 1. cd client
 
@@ -40,9 +43,7 @@ Run the following scripts to have your workplace setup
 
 ###########################################
 
-
-# How to setup your Backend environment:
-
+#### How to setup your Backend environment:
 
 1. Download Docker
 
@@ -67,8 +68,7 @@ Run the following scripts to have your workplace setup
 
      -f stands for follow
 
-# Run new build:
+#### Run new build:
 
 - cd backend
 - docker build -t backend-staffconnect .
-
