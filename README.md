@@ -1,9 +1,34 @@
-This app implements all CRUD functions and has other exciting features like pagination, NGRX, state management, etc.
 
+### This app implements all CRUD functions and has other interesting features like pagination, NGRX, state management and many more.
 
-Note: Develop is our main development branch and only confirmed pull-requests would be merged to this branch.
+# Note: Develop is our main development branch and only confirmed pull-requests would be merged to this branch.
 
-How to setup your Front end environment:
+Stack
+Frontend: Angular.js
+Backend: Nest.js
+
+### General setup (Recommended)
+
+Run the following scripts to have your workplace setup
+
+- Download docker-desktop if you aren't using a Linux system.
+  https://www.docker.com/products/docker-desktop/
+
+- npm run setup:new (clone the repo and never worked with angular, installs angular cli globally).
+
+- npm run setup (recommended every time you create a new branch or clone the repo)
+
+### Before Pushing and Merging.
+
+- git add .
+
+- git commit -m "commit message"
+
+- git push
+
+### Extensive Install Guide (Not Recommended)
+
+# How to setup your Front end environment:
 
 1. cd client
 
@@ -15,7 +40,9 @@ How to setup your Front end environment:
 
 ###########################################
 
-How to setup your Backend environment:
+
+# How to setup your Backend environment:
+
 
 1. Download Docker
 
@@ -38,24 +65,10 @@ How to setup your Backend environment:
 
    - docker logs -f backend-staffconnect
 
-   ## -f stands for follow
+     -f stands for follow
 
-   Before Pushing and Merging.
+# Run new build:
 
-   1. Run new build:
-
-      - cd backend
-      - docker build -t backend-staffconnect .
-
-   2. Update the Tar file in builds
-
-      - docker save -o ../builds/backend-staffconnect.tar backend-staffconnect
-
-   3. - git add .
-
-   4. - git commit -m "commit message"
-
-   5. - git push
-
-
+- cd backend
+- docker build -t backend-staffconnect .
 
