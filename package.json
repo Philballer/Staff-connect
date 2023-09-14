@@ -12,6 +12,7 @@
     "build:docker": "cd backend &&  docker build -t backend-staffconnect .",
     "setup": "npm run build:docker && npm run install && npm run start:docker",
     "setup:new": "npm install -g @angular/cli && np && npm run setup"
+
   },
   "keywords": [],
   "author": "",
