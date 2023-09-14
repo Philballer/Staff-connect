@@ -11,15 +11,24 @@ export enum UserActionEnums {
   CREATE_USER = '[Users] Create User',
   CREATE_USER_SUCCESS = '[Users] Create User Success',
   CREATE_USER_FAIL = '[Users] Create User Fail',
+  SEARCH_USER = '[Users] Search User',
+  SEARCH_USER_SUCCESS = '[Users] Search User Success',
+  SEARCH_USER_FAIL = '[Users] Search User Fail',
 }
 
 export class LoadUsers implements Action {
   readonly type = UserActionEnums.LOAD_USERS;
+  constructor(public pageNumber: number = 1) {}
 }
 
 export class LoadUsersSuccess implements Action {
   readonly type = UserActionEnums.LOAD_USERS_SUCCESS;
-  constructor(public payload: IUser[]) {}
+  constructor(
+    public data: IUser[],
+    public total: number,
+    public queryFound: number,
+    public limit: number
+  ) {}
 }
 
 export class LoadUsersError implements Action {
@@ -54,6 +63,23 @@ export class CreateUserFail implements Action {
   readonly type = UserActionEnums.CREATE_USER_FAIL;
   constructor(public payload: string) {}
 }
+export class SearchUser implements Action {
+  readonly type = UserActionEnums.SEARCH_USER;
+  constructor(public payload: string) {}
+}
+export class SearchUserSuccess implements Action {
+  readonly type = UserActionEnums.SEARCH_USER_SUCCESS;
+  constructor(
+    public payload: IUser[],
+    public total: number,
+    public queryFound: number,
+    public limit: number
+  ) {}
+}
+export class SearchUserError implements Action {
+  readonly type = UserActionEnums.SEARCH_USER_FAIL;
+  constructor(public payload: string) {}
+}
 
 export type UserActions =
   | LoadUsers
@@ -64,4 +90,7 @@ export type UserActions =
   | DeleteUserSuccess
   | CreateUser
   | CreateUserSuccess
-  | CreateUserFail;
+  | CreateUserFail
+  | SearchUser
+  | SearchUserSuccess
+  | SearchUserError;

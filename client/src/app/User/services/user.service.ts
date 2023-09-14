@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces/user.interface';
 import { Observable } from 'rxjs';
 
-interface IResponse {
+export interface IResponse {
+  data: IUser[];
   limit: number;
   total: number;
-  data: IUser[];
+  found?: number;
 }
 
-interface IDeleteResponse {
+export interface IDeleteResponse {
   message: string;
   userId: string;
 }
@@ -20,8 +21,14 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllUsers(): Observable<IResponse> {
-    return this.http.get<IResponse>(this.server_URL);
+  public getAllUsers(page: number): Observable<IResponse> {
+    const paginationURl = `${this.server_URL}?page=${page}`;
+    return this.http.get<IResponse>(paginationURl);
+  }
+
+  public searchUser(query: string): Observable<IResponse> {
+    const searchURL = `${this.server_URL}?keyword=${query}`;
+    return this.http.get<IResponse>(searchURL);
   }
 
   public createUser(user: IUser): Observable<IUser> {

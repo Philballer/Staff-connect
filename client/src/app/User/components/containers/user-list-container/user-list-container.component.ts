@@ -5,7 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddUserModalComponent } from '../../add-user-modal/add-user-modal.component';
 import { Store } from '@ngrx/store';
 import { UserState } from 'src/app/User/store/reducer';
-import { DeleteUser, LoadUsers } from 'src/app/User/store/actions';
+import { DeleteUser, LoadUsers, SearchUser } from 'src/app/User/store/actions';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-list-container',
@@ -15,27 +17,40 @@ import { DeleteUser, LoadUsers } from 'src/app/User/store/actions';
 export class UserListContainerComponent implements OnInit, OnDestroy {
   public users: IUser[];
 
+  public loading: boolean = false;
+
+  public paginationOccurred: boolean = false;
+
+  public searchValue: string;
+
   private subscriptionList = new SubscriptionList();
 
   constructor(
     private dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
     private store: Store<{ users: UserState }>
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.subscriptionList.add(
-      this.store.select('users').subscribe((res) => (this.users = res.data))
+      this.store.select('users').subscribe((res: UserState) => {
+        this.users = res.data;
+        this.loading = res.loading;
+        this.paginationOccurred = res.userPaginated;
+      })
     );
     this.store.dispatch(new LoadUsers());
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.subscriptionList.unsubscribe();
   }
 
   public onAddBtnClick(): void {
     const modalProperties = {
-      width: '500px',
+      width: '30%',
       data: {},
     };
     const dialogRef = this.dialog.open(AddUserModalComponent, modalProperties);
@@ -46,7 +61,31 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
     console.log(user);
   }
 
+  public onUserSearch(searchValue: string): void {
+    this.searchValue = searchValue;
+    if (searchValue === '') {
+      this.router.navigate(['/home']);
+      this.store.dispatch(new LoadUsers());
+    } else {
+      this.router.navigate(['/home/staff/search'], {
+        queryParams: { keyword: searchValue },
+      });
+      setTimeout(() => {
+        this.store.dispatch(new SearchUser(searchValue));
+      }, 450);
+    }
+  }
+
   public onDeleteUserClick(user: IUser): void {
-    this.store.dispatch(new DeleteUser(user));
+    setTimeout(() => {
+      this.store.dispatch(new DeleteUser(user));
+    }, 450);
+  }
+
+  public reloadUsers(): void {
+    //use later to go back to exact location
+    // const currentURL = this.location.path();
+
+    this.store.dispatch(new LoadUsers());
   }
 }

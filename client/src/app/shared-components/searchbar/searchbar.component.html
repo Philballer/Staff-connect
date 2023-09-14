@@ -1,0 +1,29 @@
+<div class="d-flex h-100 w-25 align-items-center position-relative mb-1">
+  <input
+    class="w-100 no-outline"
+    type="text"
+    name="inputValue"
+    placeholder="Search..."
+    [(ngModel)]="inputValue"
+    (click)="inputClicked()"
+    (keydown.enter)="handleInput()"
+    (input)="handleInputChange($event)"
+    #inputElement
+  />
+  <div class="absolute-icon">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <app-base-icon
+        *ngIf="!loading"
+        iconClass="fa-solid text-light fa-magnifying-glass"
+        toolTip="Search for a unique Staff"
+        (click)="handleInput()"
+      ></app-base-icon>
+
+      <app-base-icon
+        *ngIf="loading"
+        iconClass="fas fa-circle-notch fa-spin text-light"
+      >
+      </app-base-icon>
+    </div>
+  </div>
+</div>

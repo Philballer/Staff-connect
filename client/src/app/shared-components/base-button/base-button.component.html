@@ -1,0 +1,10 @@
+<button
+  class="w-100"
+  [class]="inputtedClass"
+  [matTooltip]="tooltip"
+  (click)="handleButtonClick()"
+>
+  {{ buttonLabel }}
+  <i *ngIf="!pending" [class]="iconClass"></i>
+  <i *ngIf="pending" class="fa fa-spinner fa-spin"></i>
+</button>

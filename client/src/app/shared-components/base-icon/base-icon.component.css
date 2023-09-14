@@ -1,0 +1,11 @@
+.filter-primary {
+  color: white;
+}
+
+i:active {
+  transform: scale(0.9);
+}
+
+.filter-05 {
+  color: var(--dark-body-05);
+}

@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-end">
+  <span class="hidden">hidden span for pagination</span>
+  <span class="small-font py-1 mx-auto"
+    >Page {{ selectedNumber }} / {{ numberOfPages }}</span
+  >
+  <span>
+    <ul class="pagination">
+      <!-- When on lastpage only -->
+      <li
+        *ngIf="selectedNumber === numberOfPages"
+        [matTooltip]="'Go to the First page'"
+        (click)="handlePageClick(1)"
+        [ngClass]="{ disabled: selectedNumber === 1 && firstButtonDisabled }"
+        class="page-link p-1"
+      >
+        &#10554;
+      </li>
+      <!-- Always there -->
+      <li
+        [matTooltip]="'Go to the previous page'"
+        (click)="traverseButtons(selectedNumber - 1)"
+        [ngClass]="{ disabled: selectedNumber === 1 && firstButtonDisabled }"
+        class="page-link p-1"
+      >
+        &laquo;
+      </li>
+
+      <!-- Hidden till second to the last page -->
+      <li
+        *ngIf="currentPage === numberOfPages - 1"
+        (click)="handleLastPageClick(currentPage - 1)"
+        [ngClass]="{ clicked: currentPage === currentPage - 1 }"
+        class="page-link p-1"
+      >
+        {{ currentPage - 1 }}
+      </li>
+      <!-- Hidden till last page and never shows till last page -->
+      <li
+        *ngIf="currentPage === numberOfPages"
+        (click)="handleLastPageClick(currentPage - 2)"
+        [ngClass]="{ clicked: currentPage === currentPage - 2 }"
+        class="page-link p-1"
+      >
+        {{ currentPage - 2 }}
+      </li>
+      <li
+        *ngIf="currentPage === numberOfPages"
+        (click)="handlePageClick(currentPage - 1)"
+        [ngClass]="{ clicked: selectedNumber === currentPage - 1 }"
+        class="page-link p-1"
+      >
+        {{ currentPage - 1 }}
+      </li>
+
+      <!-- Current page determinant -->
+      <li
+        (click)="handlePageClick(currentPage)"
+        [ngClass]="{ clicked: selectedNumber === currentPage }"
+        class="page-link p-1 clicked"
+      >
+        {{ currentPage }}
+      </li>
+
+      <!-- Hidden at last page, shows from beginning  -->
+      <li
+        *ngIf="currentPage < numberOfPages"
+        (click)="handlePageClick(currentPage + 1)"
+        [ngClass]="{ clicked: selectedNumber === currentPage + 1 }"
+        class="page-link p-1"
+      >
+        {{ currentPage + 1 }}
+      </li>
+      <li
+        *ngIf="currentPage < numberOfPages - 1"
+        (click)="handleLastPageClick(currentPage + 2)"
+        [ngClass]="{ clicked: currentPage === currentPage + 2 }"
+        class="page-link p-1"
+      >
+        {{ currentPage + 2 }}
+      </li>
+
+      <li
+        [matTooltip]="'Go to the next page'"
+        (click)="traverseButtons(selectedNumber + 1)"
+        [ngClass]="{
+          disabled: selectedNumber === numberOfPages && firstButtonDisabled
+        }"
+        class="page-link p-1"
+      >
+        &raquo;
+      </li>
+    </ul>
+  </span>
+</div>

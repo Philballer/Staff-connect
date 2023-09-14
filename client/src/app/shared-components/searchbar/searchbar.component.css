@@ -1,0 +1,38 @@
+input {
+  border-radius: 20px;
+  height: 33px;
+}
+
+.absolute-icon {
+  position: absolute;
+  left: 88%;
+  height: 70%;
+  width: 10%;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+.absolute-icon-disabled {
+  position: absolute;
+  left: 88%;
+  height: 70%;
+  width: 10%;
+  background-color: var(--dark-body-02);
+  border-radius: 50%;
+}
+.absolute-icon-disabled div i {
+  cursor: none;
+}
+
+/* This also styles the input */
+.no-outline {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  font-size: 17px;
+  color: var(--primary);
+}
+
+input:focus {
+  outline: 4px solid var(--primary);
+}
