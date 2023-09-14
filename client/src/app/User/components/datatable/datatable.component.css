@@ -26,18 +26,12 @@
   transition: all 1s;
   /* cursor: pointer; */
 }
-.delete-icon {
-  color: #5bc0de;
-}
-
-.delete-icon:hover {
-  color: #ccf1fd;
-  cursor: pointer;
-}
 
 th {
   padding-left: 20px;
   padding-right: 20px;
+  font-weight: 500;
+  font-size: medium;
 }
 
 td {
@@ -62,10 +56,4 @@ tr:nth-child(1) {
 
 tr:nth-child(1):hover {
   background-color: var(--primary);
-}
-
-.footer {
-  border: 1px solid var(--dark-body-05);
-  background-color: var(--dark-body-05);
-  border-radius: 10px;
 }

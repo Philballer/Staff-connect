@@ -11,16 +11,30 @@ export class UserListComponent {
   @Input()
   public users: IUser[];
 
-  @Output()
-  private userDelete = new EventEmitter<IUser>();
+  @Input()
+  public loading: boolean = false;
+
+  @Input()
+  public paginationOccurred: boolean = false;
 
   @Output()
-  private onAdd = new EventEmitter<void>();
+  public userDelete = new EventEmitter<IUser>();
 
   @Output()
-  private userClick = new EventEmitter<IUser>();
+  public onAdd = new EventEmitter<void>();
+
+  @Output()
+  public userClick = new EventEmitter<IUser>();
+
+  @Output()
+  public userSearch = new EventEmitter<string>();
+
+  @Output()
+  public searchbarClosed = new EventEmitter<void>();
 
   public tableHeaders: string[];
+
+  public showSearchbar: boolean = false;
 
   public constructor() {
     this.tableHeaders = ['Name', 'Email', 'Gender', 'DOB', 'Nationality'];
@@ -36,5 +50,14 @@ export class UserListComponent {
 
   public onUserDelete(user: IUser): void {
     this.userDelete.emit(user);
+  }
+
+  public onSearch(searchValue: string): void {
+    this.userSearch.emit(searchValue);
+  }
+
+  public handleSearchbarDisplay(): void {
+    this.showSearchbar = !this.showSearchbar;
+    if (!this.showSearchbar) this.searchbarClosed.emit();
   }
 }

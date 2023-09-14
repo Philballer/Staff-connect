@@ -21,6 +21,13 @@ export class DatatableComponent implements OnInit, OnChanges {
   @Input()
   public data: IUser[] = [];
 
+  @Input()
+  public dataLoading: boolean = false;
+
+  // stops pagination component from not displaying when the user paginates and data.length < 8
+  @Input()
+  public navigatedThroughPagination?: boolean = false;
+
   @Output()
   private onUserClick = new EventEmitter<IUser>();
 
@@ -31,7 +38,13 @@ export class DatatableComponent implements OnInit, OnChanges {
 
   public readableBirthdays: string[] = [];
 
-  public ngOnInit(): void {}
+  public componentLoaded: boolean = false;
+
+  public ngOnInit(): void {
+    setTimeout(() => {
+      this.componentLoaded = true;
+    }, 100);
+  }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] && !changes['data'].firstChange)

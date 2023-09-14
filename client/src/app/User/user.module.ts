@@ -19,6 +19,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects';
+import { DatatablePaginationComponent } from './components/datatable-pagination/datatable-pagination.component';
+import { SharedComponentsModule } from '../shared-components/shared-components.module';
 
 @NgModule({
   imports: [
@@ -31,6 +33,7 @@ import { UserEffects } from './store/effects';
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
     StoreModule.forFeature('users', reducer),
     EffectsModule.forFeature([UserEffects]),
   ],
@@ -41,6 +44,7 @@ import { UserEffects } from './store/effects';
     SingleUserListComponent,
     AddUserModalComponent,
     DatatableComponent,
+    DatatablePaginationComponent,
   ],
   providers: [UserService],
   exports: [

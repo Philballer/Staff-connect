@@ -22,8 +22,41 @@ body {
 
 .user-image {
   border-radius: 50%;
+  height: 13%;
+  width: 13%;
 }
 .user-image-big {
   width: 250px;
   border-radius: 50%;
+}
+
+.image-column {
+  max-width: 15%;
+}
+.add-btn {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.add-btn:hover {
+  background-color: var(--primary-hover);
+  border: 1px solid var(--primary-hover);
+  transition: all 0.5s;
+}
+
+.text-root-primary {
+  color: var(--primary);
+}
+
+.text-root-disabled {
+  color: var(--dark-body-02);
+}
+
+.delete-icon {
+  color: #5bc0de;
+}
+
+.delete-icon:hover {
+  color: #ccf1fd;
+  cursor: pointer;
 }

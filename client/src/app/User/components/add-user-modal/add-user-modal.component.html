@@ -1,123 +1,130 @@
-<div class="px-5 py-2 host text-light">
-  <div class="d-flex justify-content-end mb-3">
-    <i (click)="onClose()" class="mt-2 fa fa-times text-light"></i>
-  </div>
-  <p class="h4 text-center">Add new User</p>
-  <form>
-    <div class="mb-3">
-      <label for="firstName" class="form-label">First Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="firstName"
-        name="firstName"
-        placeholder="Jamie"
-        [(ngModel)]="userData.firstName"
-      />
+<div class="host">
+  <div class="px-5 py-2 text-light modal-container">
+    <div class="d-flex justify-content-end mb-3">
+      <i (click)="onClose()" class="mt-2 fa fa-times text-light"></i>
     </div>
-    <div class="mb-3">
-      <label for="lastName" class="form-label">Last Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="lastName"
-        placeholder="Appleseed"
-        name="lastName"
-        [(ngModel)]="userData.lastName"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        id="username"
-        placeholder="Type in a unique username"
-        name="username"
-        [(ngModel)]="userData.username"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="emmail" class="form-label">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        id="emmail"
-        placeholder="jamieappleseed@gmail.com"
-        name="email"
-        [(ngModel)]="userData.email"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="address" class="form-label">Address</label>
-      <input
-        type="text"
-        class="form-control"
-        id="address"
-        placeholder="31 Redwood lane, California"
-        name="address"
-        [(ngModel)]="userData.address"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="gender" class="form-label">Gender</label>
-      <select
-        class="form-select"
-        aria-label="gender"
-        name="gender"
-        [(ngModel)]="userData.gender"
-      >
-        <!-- <option [selected]="selected">Select a Gender</option> -->
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="nationality" class="form-label">Nationality</label>
-      <select
-        class="form-select"
-        aria-label="nationality"
-        name="nationality"
-        [(ngModel)]="userData.nationality"
-      >
-        <!-- <option [selected]="selected">Select a Country</option> -->
-        <option
-          value="{{ country.name.common }}"
-          *ngFor="let country of countries"
+    <p class="h4 text-center">Add new User</p>
+    <form>
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          placeholder="Jamie"
+          [(ngModel)]="userData.firstName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Appleseed"
+          name="lastName"
+          [(ngModel)]="userData.lastName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Type in a unique username"
+          name="username"
+          [(ngModel)]="userData.username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="emmail" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="emmail"
+          placeholder="jamieappleseed@gmail.com"
+          name="email"
+          [(ngModel)]="userData.email"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="31 Redwood lane, California"
+          name="address"
+          [(ngModel)]="userData.address"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select
+          class="form-select"
+          aria-label="gender"
+          name="gender"
+          [(ngModel)]="userData.gender"
         >
-          {{ country.name.common }}
-        </option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="AvataFile" class="form-label">Avatar</label>
-      <input
-        class="form-control"
-        type="file"
-        id="AvataFile"
-        name="avatar"
-        [(ngModel)]="userData.avatar"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="date" class="form-label">Date of Birth</label>
-      <input
-        type="date"
-        class="form-control"
-        id="date"
-        name="birthday"
-        name="birthday"
-        [(ngModel)]="userData.birthday"
-      />
-    </div>
+          <!-- <option [selected]="selected">Select a Gender</option> -->
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="nationality" class="form-label">Nationality</label>
+        <select
+          class="form-select"
+          aria-label="nationality"
+          name="nationality"
+          [(ngModel)]="userData.nationality"
+        >
+          <!-- <option [selected]="selected">Select a Country</option> -->
+          <option
+            value="{{ country.name.common }}"
+            *ngFor="let country of countries"
+          >
+            {{ country.name.common }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="AvataFile" class="form-label">Avatar</label>
+        <input
+          class="form-control"
+          type="file"
+          id="AvataFile"
+          name="avatar"
+          [(ngModel)]="userData.avatar"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date of Birth</label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          name="birthday"
+          name="birthday"
+          [(ngModel)]="userData.birthday"
+        />
+      </div>
 
-    <span class="d-flex justify-content-center mb-3">
-      <button
-        (click)="submitForm()"
-        class="btn btn-success btn-lg w-50 fw-bold"
-      >
-        Send
-      </button>
-    </span>
-  </form>
+      <span class="d-flex justify-content-center mb-3">
+        <app-base-button
+          buttonLabel="Send"
+          class="w-50"
+          inputtedClass="btn btn-success btn-lg"
+          (onClick)="submitForm()"
+        ></app-base-button>
+      </span>
+    </form>
+  </div>
 </div>
+
+<!-- <button
+  (click)="submitForm()"
+  class="btn btn-success btn-lg w-50 fw-bold"
+></button> -->

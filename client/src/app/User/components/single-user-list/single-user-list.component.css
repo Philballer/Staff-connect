@@ -29,3 +29,7 @@
   color: #ccf1fd;
   cursor: pointer;
 }
+
+img {
+  border-radius: 50%;
+}

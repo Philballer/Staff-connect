@@ -1,15 +1,54 @@
 <div class="container">
   <div class="d-flex justify-content-end mb-5">
-    <button class="btn btn-dark add-btn" (click)="onAddUser()">
-      Add
-      <i class="fa fa-plus"></i>
-    </button>
+    <app-base-button
+      buttonLabel="Add"
+      inputtedClass="btn btn-dark add-btn"
+      iconClass="fa fa-plus"
+      tooltip="Opens the dialog to add a new Employee"
+      (onClick)="onAddUser()"
+    ></app-base-button>
   </div>
 
-  <app-datatable
-    [headers]="tableHeaders"
-    [data]="users"
-    (onUserClick)="onUserClick($event)"
-    (onDelete)="onUserDelete($event)"
-  ></app-datatable>
+  <div class="d-flex mb-2">
+    <app-base-icon
+      *ngIf="!showSearchbar"
+      iconClass="fa-solid fa-filter filter-primary fs-6"
+      toolTip="Open the Searchbar"
+      (click)="handleSearchbarDisplay()"
+    ></app-base-icon>
+    <app-base-icon
+      *ngIf="showSearchbar"
+      iconClass="fa fa-times filter-primary fs-6"
+      toolTip="Close the Searchbar"
+      (click)="handleSearchbarDisplay()"
+    ></app-base-icon>
+    <div class="ms-2 mb-1 flex-fill">
+      <app-searchbar
+        *ngIf="showSearchbar"
+        (onSearch)="onSearch($event)"
+        [loading]="loading"
+      ></app-searchbar>
+    </div>
+  </div>
+
+  <div class="position-relative">
+    <app-datatable
+      [headers]="tableHeaders"
+      [data]="users"
+      [navigatedThroughPagination]="paginationOccurred"
+      [dataLoading]="loading"
+      (onUserClick)="onUserClick($event)"
+      (onDelete)="onUserDelete($event)"
+    >
+    </app-datatable>
+
+    <div
+      *ngIf="loading && users.length > 1"
+      class="position-absolute w-100 h-100 top-0"
+    >
+      <div class="d-flex h-75 justify-content-center align-items-center">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div>
 </div>

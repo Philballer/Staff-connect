@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../services/user.service';
+import {
+  IDeleteResponse,
+  IResponse,
+  UserService,
+} from '../services/user.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   LoadUsersError,
@@ -11,10 +15,15 @@ import {
   CreateUser,
   CreateUserSuccess,
   CreateUserFail,
+  SearchUserSuccess,
+  SearchUserError,
+  LoadUsers,
 } from './actions';
-import { catchError, map, switchMap, tap, of } from 'rxjs';
+import { catchError, map, switchMap, of, concatMap } from 'rxjs';
 import { ToasterService } from 'src/app/shared-components/shared-services/toaster-service/toaster.services';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IUser } from '../interfaces/user.interface';
+import { SearchUser } from './actions';
 
 @Injectable()
 export class UserEffects {
@@ -27,9 +36,17 @@ export class UserEffects {
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActionEnums.LOAD_USERS),
-      switchMap(() =>
-        this.userService.getAllUsers().pipe(
-          map((response) => new LoadUsersSuccess(response.data)),
+      switchMap((action: LoadUsers) =>
+        this.userService.getAllUsers(action.pageNumber).pipe(
+          map(
+            (response: IResponse) =>
+              new LoadUsersSuccess(
+                response.data,
+                response.total,
+                response.found,
+                response.limit
+              )
+          ),
           catchError((error: HttpErrorResponse) => {
             this.toaster.toast(
               'error',
@@ -48,7 +65,7 @@ export class UserEffects {
       ofType(UserActionEnums.DELETE_USER),
       switchMap((action: DeleteUser) =>
         this.userService.deleteUser(action.payload._id).pipe(
-          map((response) => {
+          map((response: IDeleteResponse) => {
             this.toaster.toast(
               'success',
               `user: ${action.payload.firstName} ${action.payload.lastName}`,
@@ -63,7 +80,8 @@ export class UserEffects {
               'User cannot be deleted'
             );
             return of(new DeleteUSerError(error.message));
-          })
+          }),
+          concatMap(() => [new LoadUsers()]) // loads New users right after delete, array helps with sequence
         )
       )
     )
@@ -74,7 +92,7 @@ export class UserEffects {
       ofType(UserActionEnums.CREATE_USER),
       switchMap((action: CreateUser) =>
         this.userService.createUser(action.payload).pipe(
-          map((response) => {
+          map((response: IUser) => {
             this.toaster.toast('success', '', 'User creation Successful');
             return new CreateUserSuccess(response);
           }),
@@ -85,6 +103,33 @@ export class UserEffects {
               'User cannot be created'
             );
             return of(new CreateUserFail(error.error.message));
+          })
+        )
+      )
+    )
+  );
+
+  searchUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActionEnums.SEARCH_USER),
+      switchMap((action: SearchUser) =>
+        this.userService.searchUser(action.payload).pipe(
+          map(
+            (response: IResponse) =>
+              new SearchUserSuccess(
+                response.data,
+                response.total,
+                response.found,
+                response.limit
+              )
+          ),
+          catchError((error: HttpErrorResponse) => {
+            this.toaster.toast(
+              'error',
+              `${error.error.message}`,
+              'Error While Searching'
+            );
+            return of(new SearchUserError(error.error.message));
           })
         )
       )

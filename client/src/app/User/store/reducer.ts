@@ -5,11 +5,17 @@ export interface UserState {
   loading: boolean;
   data: IUser[];
   error?: string;
+  userCountFromQuery?: number;
+  userPaginated?: boolean; //stops the pagination component from being invisible
+  totalFromQuery?: number; //total entries including paginated entries
+  foundFromQuery?;
+  pageLimit?: number;
 }
 
 const initialState: UserState = {
-  loading: false,
   data: [],
+  loading: false,
+  userPaginated: false,
 };
 
 export function reducer(state = initialState, action: UserActions): UserState {
@@ -24,7 +30,11 @@ export function reducer(state = initialState, action: UserActions): UserState {
     case UserActionEnums.LOAD_USERS_SUCCESS: {
       return {
         loading: false,
-        data: action.payload,
+        data: action.data,
+        userPaginated: true,
+        pageLimit: action.limit,
+        totalFromQuery: action.total,
+        foundFromQuery: action.queryFound,
       };
     }
 
@@ -49,8 +59,6 @@ export function reducer(state = initialState, action: UserActions): UserState {
     }
 
     case UserActionEnums.DELETE_USER_FAIL: {
-      console.log('from reducer error', action.payload);
-
       return {
         ...state,
         loading: false,
@@ -75,6 +83,30 @@ export function reducer(state = initialState, action: UserActions): UserState {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    }
+    case UserActionEnums.SEARCH_USER: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case UserActionEnums.SEARCH_USER_SUCCESS: {
+      return {
+        loading: false,
+        data: action.payload,
+        pageLimit: action.limit,
+        totalFromQuery: action.total,
+        foundFromQuery: action.queryFound,
+        userPaginated: false,
+      };
+    }
+    case UserActionEnums.SEARCH_USER_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        userPaginated: false,
       };
     }
 
