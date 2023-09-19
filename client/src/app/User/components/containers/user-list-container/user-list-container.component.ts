@@ -63,16 +63,15 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
 
   public onUserSearch(searchValue: string): void {
     this.searchValue = searchValue;
-    if (searchValue === '') {
-      this.router.navigate(['/home']);
+    if (searchValue === '' || searchValue.length === 0) {
       this.store.dispatch(new LoadUsers());
+      this.router.navigate(['/home']);
     } else {
       this.router.navigate(['/home/staff/search'], {
         queryParams: { keyword: searchValue },
       });
-      setTimeout(() => {
-        this.store.dispatch(new SearchUser(searchValue));
-      }, 450);
+
+      this.store.dispatch(new SearchUser(searchValue));
     }
   }
 

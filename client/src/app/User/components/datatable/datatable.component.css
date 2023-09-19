@@ -8,25 +8,6 @@
   cursor: pointer;
 }
 
-.user-border {
-  border: 5px solid var(--primary);
-  border-radius: 10px;
-}
-
-.column-width {
-  width: 20%;
-}
-
-.user-item {
-  background-color: var(--dark-body-03);
-}
-
-.user-item:hover {
-  background-color: var(--dark-body-01);
-  transition: all 1s;
-  /* cursor: pointer; */
-}
-
 th {
   padding-left: 20px;
   padding-right: 20px;
