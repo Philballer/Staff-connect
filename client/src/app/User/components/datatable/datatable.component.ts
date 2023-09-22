@@ -40,6 +40,12 @@ export class DatatableComponent implements OnInit, OnChanges {
 
   public componentLoaded: boolean = false;
 
+  public stockImageMale: string =
+    'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg';
+
+  public stockImageFemale: string =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCWFOIYfthrvoiQRpkpdg3poj5nSlYGtBLjg&usqp=CAU';
+
   public ngOnInit(): void {
     setTimeout(() => {
       this.componentLoaded = true;

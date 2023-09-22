@@ -10,6 +10,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { BaseIconComponent } from './base-icon/base-icon.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   imports: [CommonModule, MatIconModule, MatTooltipModule, FormsModule],
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     SpinnerComponent,
     SearchbarComponent,
     BaseIconComponent,
+    AboutComponent,
   ],
   exports: [
     NavbarComponent,
@@ -28,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     SearchbarComponent,
     BaseIconComponent,
     MatTooltipModule,
+    AboutComponent,
   ],
   providers: [ToasterService, CountryService],
 })

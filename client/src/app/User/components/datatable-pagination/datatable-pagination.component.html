@@ -7,7 +7,7 @@
     <ul class="pagination">
       <!-- When on lastpage only -->
       <li
-        *ngIf="selectedNumber === numberOfPages"
+        *ngIf="selectedNumber === numberOfPages && selectedNumber !== 1"
         [matTooltip]="'Go to the First page'"
         (click)="handlePageClick(1)"
         [ngClass]="{ disabled: selectedNumber === 1 && firstButtonDisabled }"
@@ -27,7 +27,11 @@
 
       <!-- Hidden till second to the last page -->
       <li
-        *ngIf="currentPage === numberOfPages - 1"
+        *ngIf="
+          currentPage === numberOfPages - 1 &&
+          selectedNumber !== 1 &&
+          selectedNumber !== 2
+        "
         (click)="handleLastPageClick(currentPage - 1)"
         [ngClass]="{ clicked: currentPage === currentPage - 1 }"
         class="page-link p-1"
@@ -36,7 +40,7 @@
       </li>
       <!-- Hidden till last page and never shows till last page -->
       <li
-        *ngIf="currentPage === numberOfPages"
+        *ngIf="currentPage === numberOfPages && selectedNumber !== 1"
         (click)="handleLastPageClick(currentPage - 2)"
         [ngClass]="{ clicked: currentPage === currentPage - 2 }"
         class="page-link p-1"
@@ -44,7 +48,7 @@
         {{ currentPage - 2 }}
       </li>
       <li
-        *ngIf="currentPage === numberOfPages"
+        *ngIf="currentPage === numberOfPages && selectedNumber !== 1"
         (click)="handlePageClick(currentPage - 1)"
         [ngClass]="{ clicked: selectedNumber === currentPage - 1 }"
         class="page-link p-1"
