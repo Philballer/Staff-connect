@@ -46,6 +46,8 @@ export class DatatablePaginationComponent implements OnInit, OnDestroy {
     );
 
     this.calcNumberOfPages(this.pageLimit, this.totalEntries);
+
+    if (this.numberOfPages === 1) this.firstButtonDisabled = true;
   }
 
   public ngOnDestroy(): void {
@@ -114,4 +116,9 @@ export class DatatablePaginationComponent implements OnInit, OnDestroy {
       this.store.dispatch(new LoadUsers(number));
     }, 300);
   }
+
+  // issue Logger
+  // public logIssue(): void {
+  //   console.log('the issue');
+  // }
 }

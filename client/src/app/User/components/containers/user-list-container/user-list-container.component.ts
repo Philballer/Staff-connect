@@ -76,9 +76,7 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
   }
 
   public onDeleteUserClick(user: IUser): void {
-    setTimeout(() => {
-      this.store.dispatch(new DeleteUser(user));
-    }, 450);
+    this.store.dispatch(new DeleteUser(user));
   }
 
   public reloadUsers(): void {
