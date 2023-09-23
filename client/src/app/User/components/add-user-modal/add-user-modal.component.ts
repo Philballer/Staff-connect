@@ -73,4 +73,8 @@ export class AddUserModalComponent implements OnInit, OnDestroy {
     this.selected = false;
     this.genderSelected = true;
   }
+
+  public handleFileSelected(event: any): void {
+    console.log(event.target.files[0]);
+  }
 }

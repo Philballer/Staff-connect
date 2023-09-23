@@ -11,9 +11,20 @@ import { BaseIconComponent } from './base-icon/base-icon.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, MatTooltipModule, FormsModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatTooltipModule,
+    FormsModule,
+    AppRoutingModule,
+    MatMenuModule,
+    MatButtonModule,
+  ],
   declarations: [
     NavbarComponent,
     BaseButtonComponent,
@@ -31,6 +42,8 @@ import { AboutComponent } from './about/about.component';
     BaseIconComponent,
     MatTooltipModule,
     AboutComponent,
+    MatButtonModule,
+    MatMenuModule,
   ],
   providers: [ToasterService, CountryService],
 })

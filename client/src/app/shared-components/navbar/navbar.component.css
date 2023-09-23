@@ -1,3 +1,35 @@
+.btn:hover {
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
 .bg-navbar {
   background-color: var(--primary);
+}
+
+.dropdown-gear:active {
+  transform: scale(0.91);
+}
+
+.dropdown-gear:hover {
+  color: #ffffffec;
+  transition: all 0.1s ease-in;
+}
+
+.dropdown-style {
+  border: 2px solid var(--primary);
+}
+
+.dropdown-style li a {
+  color: var(--primary);
+}
+
+.dropdown-style li a:hover {
+  color: #fff;
+  background-color: var(--primary);
+  transition: all 0.3s ease-in;
 }
