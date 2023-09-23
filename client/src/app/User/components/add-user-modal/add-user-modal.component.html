@@ -97,7 +97,8 @@
           type="file"
           id="AvataFile"
           name="avatar"
-          [(ngModel)]="userData.avatar"
+          accept="image/*"
+          (input)="handleFileSelected($event)"
         />
       </div>
       <div class="mb-3">

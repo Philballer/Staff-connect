@@ -6,7 +6,26 @@
     </a>
 
     <div class="d-flex">
-      <a routerLink="/home" class="btn btn-outline-light mx-1">Home</a>
+      <a routerLink="/home" class="btn btn-outline-light">Home</a>
+      <a routerLink="#" class="btn btn-outline-light ms-3">Profile</a>
+
+      <div class="dropdown ms-3 d-flex align-items-center">
+        <a
+          class="text-light"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-gear dropdown-gear"></i>
+        </a>
+
+        <ul class="dropdown-menu dropdown-style">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
