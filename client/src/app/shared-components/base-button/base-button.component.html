@@ -3,8 +3,11 @@
   [class]="inputtedClass"
   [matTooltip]="tooltip"
   (click)="handleButtonClick()"
+  data-testid="button"
 >
   {{ buttonLabel }}
-  <i *ngIf="!pending" [class]="iconClass"></i>
-  <i *ngIf="pending" class="fa fa-spinner fa-spin"></i>
+  <i
+    [class]="pending ? pendingIconClass : iconClass"
+    data-testid="button-icon"
+  ></i>
 </button>

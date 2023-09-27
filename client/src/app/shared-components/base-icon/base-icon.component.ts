@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class BaseIconComponent {
   @Input()
   public iconClass: string;
+  public icos: string = 'show';
 
   @Input()
   public toolTip?: string;
