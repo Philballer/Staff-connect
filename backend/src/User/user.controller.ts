@@ -8,6 +8,8 @@ import {
   Delete,
   Logger,
   Query,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { UserService } from './service/user.service';
 import { User } from './schemas/user.schema';
@@ -18,6 +20,9 @@ import {
   PaginationResult,
   defaultPaginationOptions,
 } from './pagination/pagination';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 
 @Controller('users')
 export class UserController {
@@ -39,6 +44,29 @@ export class UserController {
   @Post()
   async createUser(@Body() user: CreateUserDto): Promise<User> {
     return this.userService.create(user);
+  }
+
+  @Post('/upload')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './avatars',
+        filename: (req, file, callback) => {
+          const uniqueSuffix =
+            Date.now() + '-' + Math.round(Math.random() * 1e9);
+          const extension = extname(file.originalname);
+          const filename = `${uniqueSuffix}${extension}`;
+          callback(null, filename);
+        },
+      }),
+    }),
+  )
+  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log('file', file);
+    const relativePath = file.path;
+    const baseUrl = 'http://localhost:5000/users';
+    const completeUrl = new URL(relativePath, baseUrl);
+    return completeUrl;
   }
 
   @Put(':id')

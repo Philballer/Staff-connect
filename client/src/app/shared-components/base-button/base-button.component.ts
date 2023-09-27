@@ -23,6 +23,8 @@ export class BaseButtonComponent {
 
   public pending: boolean = false;
 
+  public pendingIconClass = 'fa fa-spinner fa-spin';
+
   public handleButtonClick(): void {
     this.onClick.emit();
   }

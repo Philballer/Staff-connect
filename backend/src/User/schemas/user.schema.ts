@@ -11,10 +11,10 @@ export class User {
   @Prop()
   lastName: string;
 
-  @Prop()
+  @Prop({ required: true, unique: true })
   username: string;
 
-  @Prop()
+  @Prop({ unique: true })
   email: string;
 
   @Prop()

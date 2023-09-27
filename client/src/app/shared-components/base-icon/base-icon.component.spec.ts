@@ -1,21 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { BaseIconComponent } from './base-icon.component';
 
 describe('BaseIconComponent', () => {
-  let component: BaseIconComponent;
-  let fixture: ComponentFixture<BaseIconComponent>;
+  let spectator: Spectator<BaseIconComponent>;
+  let icon: HTMLElement;
+
+  const create = createComponentFactory(BaseIconComponent);
+
+  function queryElements(): void {
+    icon = spectator.query('[data-testid="icon"]');
+  }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [BaseIconComponent]
-    });
-    fixture = TestBed.createComponent(BaseIconComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = create();
+    queryElements();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have the input icon class', () => {
+    const iconClass = 'fa test';
+    spectator.setInput('iconClass', iconClass);
+    spectator.detectChanges();
+    expect(icon).toHaveClass(iconClass);
   });
 });
