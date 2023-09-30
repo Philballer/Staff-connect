@@ -4,6 +4,7 @@ export class ImageFile {
 }
 
 export interface deleteMessage {
-  userId: string;
+  userId?: string;
+  profileId?: string;
   message: string;
 }

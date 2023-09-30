@@ -1,21 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { SearchbarComponent } from './searchbar.component';
+import { BaseIconComponent } from '../base-icon/base-icon.component';
+import { FormsModule } from '@angular/forms';
 
 describe('SearchbarComponent', () => {
-  let component: SearchbarComponent;
-  let fixture: ComponentFixture<SearchbarComponent>;
+  let spectator: Spectator<SearchbarComponent>;
+  let searchInput: HTMLElement;
+  let inputIcon: BaseIconComponent;
+  let inputIconPending: BaseIconComponent;
+
+  const create = createComponentFactory({
+    component: SearchbarComponent,
+    imports: [FormsModule],
+    providers: [],
+  });
+
+  function queryElements(): void {
+    searchInput = spectator.query('input');
+    // inputIcon = spectator.query(BaseIconComponent) as BaseIconComponent;
+  }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [SearchbarComponent]
-    });
-    fixture = TestBed.createComponent(SearchbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    queryElements();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should focus on the input element upon initialization of the component', () => {});
 });

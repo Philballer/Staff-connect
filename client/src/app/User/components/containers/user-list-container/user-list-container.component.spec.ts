@@ -1,23 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { UserListContainerComponent } from './user-list-container.component';
+import { UserListComponent } from '../../user-list/user-list.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { UserState } from 'src/app/User/store/reducer';
 
 describe('UserListContainerComponent', () => {
-  let component: UserListContainerComponent;
-  let fixture: ComponentFixture<UserListContainerComponent>;
+  let spectator: Spectator<UserListContainerComponent>;
+  let store: Store<{ users: UserState }>;
+
+  const create = createComponentFactory({
+    component: UserListContainerComponent,
+    imports: [MatDialogModule],
+    declarations: [],
+    providers: [MatDialog, Router, ActivatedRoute],
+    shallow: true,
+  });
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UserListContainerComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(UserListContainerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = create();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

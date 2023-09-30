@@ -62,7 +62,8 @@ export class UserService {
     const users = await this.userModel
       .find({ ...keyword })
       .limit(pagination.limit)
-      .skip(skip);
+      .skip(skip)
+      .populate('profile');
 
     const count = await this.userModel.countDocuments({ ...keyword });
 
@@ -88,10 +89,22 @@ export class UserService {
     };
     const isValidUser = this.isValidCreateUserDto(user);
     if (!isValidUser) throw new BadRequestException('Invalid user data');
-    return await this.userModel.create(userData);
+    try {
+      return await this.userModel.create(userData);
+    } catch (error) {
+      const newError = {
+        message: 'Duplicate key Error',
+        details: { ...error },
+      };
+
+      throw new BadRequestException(newError);
+    }
   }
 
-  public async updateById(id: string, userData: UpdateUserDto): Promise<User> {
+  public async updateById(
+    id: string,
+    userData: Partial<UpdateUserDto>,
+  ): Promise<User> {
     const queryOptions = {
       new: true,
       runValidators: true,
@@ -117,8 +130,6 @@ export class UserService {
     return (
       typeof user.firstName === 'string' &&
       typeof user.lastName === 'string' &&
-      typeof user.username === 'string' &&
-      typeof user.email === 'string' &&
       typeof user.address === 'string' &&
       typeof user.gender === 'string' &&
       typeof user.nationality === 'string' &&

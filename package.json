@@ -20,5 +20,8 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.2.1"
+  },
+  "devDependencies": {
+    "ng-mocks": "^14.11.0"
   }
 }
