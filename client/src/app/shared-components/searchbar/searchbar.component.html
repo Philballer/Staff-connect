@@ -8,18 +8,21 @@
     (click)="inputClicked()"
     (keydown.enter)="handleInput()"
     (input)="handleInputChange($event)"
+    data-testid="input"
     #inputElement
   />
   <div class="absolute-icon">
     <div class="d-flex justify-content-center align-items-center h-100">
       <app-base-icon
+        data-testid="inputIconDefault"
         *ngIf="!loading"
-        iconClass="fa-solid text-light fa-magnifying-glass"
+        iconClass=" fa-solid text-light fa-magnifying-glass"
         toolTip="Search for a unique Staff"
         (click)="handleInput()"
       ></app-base-icon>
 
       <app-base-icon
+        data-testid="inputIconLoading"
         *ngIf="loading"
         iconClass="fas fa-circle-notch fa-spin text-light"
       >

@@ -30,18 +30,18 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location,
-    private store: Store<{ users: UserState }>
+    private store$: Store<{ users: UserState }>
   ) {}
 
   public ngOnInit(): void {
     this.subscriptionList.add(
-      this.store.select('users').subscribe((res: UserState) => {
+      this.store$.select('users').subscribe((res: UserState) => {
         this.users = res.data;
         this.loading = res.loading;
         this.paginationOccurred = res.userPaginated;
       })
     );
-    this.store.dispatch(new LoadUsers());
+    this.store$.dispatch(new LoadUsers());
   }
 
   public ngOnDestroy(): void {
@@ -64,25 +64,25 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
   public onUserSearch(searchValue: string): void {
     this.searchValue = searchValue;
     if (searchValue === '' || searchValue.length === 0) {
-      this.store.dispatch(new LoadUsers());
+      this.store$.dispatch(new LoadUsers());
       this.router.navigate(['/home']);
     } else {
       this.router.navigate(['/home/staff/search'], {
         queryParams: { keyword: searchValue },
       });
 
-      this.store.dispatch(new SearchUser(searchValue));
+      this.store$.dispatch(new SearchUser(searchValue));
     }
   }
 
   public onDeleteUserClick(user: IUser): void {
-    this.store.dispatch(new DeleteUser(user));
+    this.store$.dispatch(new DeleteUser(user));
   }
 
   public reloadUsers(): void {
     //use later to go back to exact location
     // const currentURL = this.location.path();
 
-    this.store.dispatch(new LoadUsers());
+    this.store$.dispatch(new LoadUsers());
   }
 }

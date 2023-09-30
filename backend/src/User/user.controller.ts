@@ -5,7 +5,6 @@ import {
   Param,
   Post,
   Put,
-  Delete,
   Logger,
   Query,
   UseInterceptors,
@@ -14,7 +13,6 @@ import {
 import { UserService } from './service/user.service';
 import { User } from './schemas/user.schema';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
-import { deleteMessage } from './helper/user.helpers';
 import { Query as ExpressQuery } from 'express-serve-static-core';
 import {
   PaginationResult,
@@ -24,7 +22,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-@Controller('users')
+@Controller('api/users')
 export class UserController {
   private readonly logger = new Logger(UserController.name);
   constructor(private userService: UserService) {}
@@ -72,13 +70,15 @@ export class UserController {
   @Put(':id')
   async updateUser(
     @Param('id') id: string,
-    @Body() user: UpdateUserDto,
+    @Body() user: Partial<UpdateUserDto>,
   ): Promise<User> {
     return this.userService.updateById(id, user);
   }
 
-  @Delete(':id')
-  async deleteUser(@Param('id') id: string): Promise<deleteMessage> {
-    return await this.userService.deleteById(id);
-  }
+  //* Not more allowed to delete from this endpoint. Delete would take place in the Profile-delete-endpoint
+
+  // @Delete(':id')
+  // async deleteUser(@Param('id') id: string): Promise<deleteMessage> {
+  //   return await this.userService.deleteById(id);
+  // }
 }

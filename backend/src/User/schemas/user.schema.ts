@@ -1,39 +1,38 @@
+import mongoose from 'mongoose';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { ImageFile } from '../helper/user.helpers';
+import { Profile } from 'src/Profile/schemas/profile.schema';
 
-@Schema({
-  timestamps: true,
-})
+@Schema({ timestamps: true })
 export class User {
-  @Prop()
+  @Prop({ required: true, minlength: 3 })
   firstName: string;
 
-  @Prop()
+  @Prop({ required: true, minlength: 3 })
   lastName: string;
 
-  @Prop({ required: true, unique: true })
-  username: string;
+  @Prop({ required: true })
+  address: string;
 
-  @Prop({ unique: true })
-  email: string;
+  @Prop({ required: true })
+  nationality: string;
+
+  @Prop({ required: true })
+  birthday: Date;
 
   @Prop()
-  address: string;
+  avatar: string;
 
   @Prop()
   gender: string;
 
   @Prop()
-  nationality: string;
-
-  @Prop()
-  birthday: Date;
-
-  @Prop({ type: ImageFile })
-  avatar: ImageFile;
-
-  @Prop()
   isAdmin: boolean;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Profile' })
+  profile: Profile;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+// @Prop({ type: ImageFile })
+// avatar: ImageFile;
