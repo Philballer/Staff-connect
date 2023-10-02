@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { MatButtonModule } from '@angular/material/button';
     SearchbarComponent,
     BaseIconComponent,
     AboutComponent,
+    PageNotFoundComponent,
   ],
   exports: [
     NavbarComponent,

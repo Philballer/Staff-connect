@@ -18,6 +18,8 @@ import {
   SearchUserSuccess,
   SearchUserError,
   LoadUsers,
+  GetOneUser,
+  GetOneUserSuccess,
 } from './actions';
 import { catchError, map, switchMap, of, concatMap } from 'rxjs';
 import { ToasterService } from 'src/app/shared-components/shared-services/toaster-service/toaster.services';
@@ -130,6 +132,25 @@ export class UserEffects {
               'Error While Searching'
             );
             return of(new SearchUserError(error.error.message));
+          })
+        )
+      )
+    )
+  );
+
+  getOneUser = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActionEnums.GET_ONE_USER),
+      switchMap((action: GetOneUser) =>
+        this.userService.getOneUser(action.id).pipe(
+          map((response: IUser) => new GetOneUserSuccess(response)),
+          catchError((error: HttpErrorResponse) => {
+            this.toaster.toast(
+              'error',
+              `${error.message}`,
+              'Failed to retrieve user details'
+            );
+            return of(new LoadUsersError(error.message));
           })
         )
       )

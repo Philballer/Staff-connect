@@ -1,0 +1,41 @@
+<div class="p-4">
+  <span class="d-flex justify-content-start">
+    <i (click)="goBack()" class="fa-solid fa-arrow-left fs-3 clickable"></i>
+  </span>
+  <div
+    *ngIf="!isLoading && !detailsLoading"
+    class="p-4 h-100 position-relative"
+  >
+    <div>
+      <img
+        src="{{ userDetails.avatar }}"
+        alt="{{ profile.username }}"
+        class="my-5 img-fluid"
+      />
+    </div>
+    <p class="h3 mb-0">
+      {{ userDetails.firstName }} {{ userDetails.lastName }}
+    </p>
+    <p class="fs-5 mb-3">@{{ profile.username }}</p>
+    <p class="fs-6 mb-4">Position: {{ profile.jobTitle }}</p>
+    <ng-container *ngIf="!isFriend; else unfriend">
+      <button
+        (click)="toggleFriendship('befriend')"
+        class="btn btn-success w-75 clickable"
+      >
+        <i class="fa-solid fa-user-plus me-2 text-light"></i>
+        Add as friend
+      </button>
+    </ng-container>
+  </div>
+
+  <ng-template #unfriend>
+    <button
+      (click)="toggleFriendship('unfriend')"
+      class="btn btn-secondary w-75 clickable"
+    >
+      <i class="fa-solid fa-user-minus me-2 text-light"></i>
+      Unfriend
+    </button>
+  </ng-template>
+</div>

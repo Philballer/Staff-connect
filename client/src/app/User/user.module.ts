@@ -57,6 +57,7 @@ import { reducer } from './store/reducer';
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule,
   ],
 })
 export class UserModule {}

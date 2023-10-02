@@ -32,14 +32,13 @@ export class ProfileController {
     @Param('id') id: string,
     @Body() profileAndUser: IProfileUserUnion,
   ): Promise<Profile> {
-    console.log(profileAndUser);
     return await this.profileService.updateProfileByIdWithNewUser(
       id,
       profileAndUser,
     );
   }
 
-  @Put('id')
+  @Put(':id')
   async updateProfile(
     @Param('id') id: string,
     @Body() profile: Partial<UpdateProfileDto>,
@@ -47,7 +46,7 @@ export class ProfileController {
     return this.profileService.updateProfile(id, profile);
   }
 
-  @Delete('id')
+  @Delete(':id')
   async deleteProfile(@Param('id') id: string): Promise<deleteMessage> {
     return await this.profileService.deleteProfile(id);
   }

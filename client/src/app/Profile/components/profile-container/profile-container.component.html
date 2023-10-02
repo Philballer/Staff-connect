@@ -1,0 +1,36 @@
+<div *ngIf="!(loading$ | async); else spinner" class="container h-75">
+  <div class="row h-100 text-light gap-5">
+    <div class="col-4 h-100 text-center bg-06">
+      <app-left-section
+        [profile]="profile"
+        [detailsLoading]="userDetailsLoading$ | async"
+        [userDetails]="userDetails$ | async"
+        [isLoading]="loading$ | async"
+        (onFriendButtonClick)="onFriendButtonClick($event)"
+        (onGoBackClick)="onGoBackClick()"
+      ></app-left-section>
+    </div>
+    <div class="col-7 h-100 d-flex flex-column justify-content-between">
+      <div class="bg-06 p-2">
+        <app-personal-info
+          [profile]="profile"
+          [user$]="userDetails$"
+          [isProfileLoading]="loading$ | async"
+          [isUserDetailsLoading]="userDetailsLoading$ | async"
+        ></app-personal-info>
+      </div>
+      <div class="bg-06 p-2">
+        <app-company-info></app-company-info>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <div class="container h-50 d-flex align-items-center justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>
+
+<pre>{{ userDetails$ | async | json }}</pre>
+<pre>{{ profile | json }}</pre>

@@ -2,12 +2,14 @@
 
 :root {
   --primary: #3f51b5;
+  --primary-01: #5e71da;
   --primary-hover: #2a3ca5;
   --dark-body-01: #3f404d;
   --dark-body-02: #40414f;
   --dark-body-03: #565869;
   --dark-body-04: #41414c;
   --dark-body-05: #373744;
+  --dark-body-06: #36374284;
 }
 
 html,
@@ -59,4 +61,34 @@ body {
 .delete-icon:hover {
   color: #ccf1fd;
   cursor: pointer;
+}
+
+.bg-06 {
+  background-color: var(--dark-body-06);
+}
+.bg-03 {
+  background-color: var(--dark-body-04);
+}
+
+.bg-purp {
+  background-color: var(--primary);
+}
+.text-purp {
+  color: var(--primary-01);
+}
+
+.clickable {
+  cursor: pointer;
+  transition: all 70ms ease-in;
+}
+
+.clickable:active {
+  transform: scale(0.92);
+}
+
+.suffix {
+  font-size: x-small;
+  vertical-align: top;
+  position: relative;
+  top: -0.2em;
 }
