@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileModule } from './Profile/profile.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     UserModule,
+    ProfileModule,
     SharedComponentsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),

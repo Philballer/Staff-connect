@@ -58,7 +58,8 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
   }
 
   public onUserListClick(user: IUser): void {
-    console.log(user);
+    this.router.navigate([`/profile/${user.profile._id}`], { state: user });
+    //passed the user as a state here
   }
 
   public onUserSearch(searchValue: string): void {
@@ -84,5 +85,6 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
     // const currentURL = this.location.path();
 
     this.store$.dispatch(new LoadUsers());
+    this.router.navigate(['/home']);
   }
 }

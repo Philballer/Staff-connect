@@ -1,10 +1,11 @@
 import { IUser } from '../interfaces/user.interface';
-import { UserActionEnums, UserActions } from './actions';
+import { UserActionEnums, UserActions, GetOneUserSuccess } from './actions';
 
 export interface UserState {
   loading: boolean;
   data: IUser[];
   error?: string;
+  activeUserProfilePage?: IUser | null;
   userCountFromQuery?: number;
   userPaginated?: boolean; //stops the pagination component from being invisible
   totalFromQuery?: number; //total entries including paginated entries
@@ -107,6 +108,26 @@ export function reducer(state = initialState, action: UserActions): UserState {
         loading: false,
         error: action.payload,
         userPaginated: false,
+      };
+    }
+    case UserActionEnums.GET_ONE_USER: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case UserActionEnums.GET_ONE_USER_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        activeUserProfilePage: action.payload,
+      };
+    }
+    case UserActionEnums.GET_ONE_USER_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
     }
 

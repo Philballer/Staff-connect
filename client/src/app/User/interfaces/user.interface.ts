@@ -11,10 +11,17 @@ export interface IUser {
   profile: IProfile;
 }
 
-interface IProfile {
+export interface IProfile {
   _id?: string;
   username: string;
   email: string;
   bio: string;
   jobTitle: string;
+  userID: string;
+}
+
+export interface IUserCountry {
+  name: { common: string; official: string };
+  flag: string; //alt for flag
+  flags: { png: string; svg: string; alt: string };
 }

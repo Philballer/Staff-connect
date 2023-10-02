@@ -13,6 +13,7 @@ export interface IResponse {
 export interface IDeleteResponse {
   message: string;
   userId: string;
+  profileId: string;
 }
 
 @Injectable()
@@ -24,6 +25,10 @@ export class UserService {
   public getAllUsers(page: number): Observable<IResponse> {
     const paginationURl = `${this.server_URL}?page=${page}`;
     return this.http.get<IResponse>(paginationURl);
+  }
+
+  public getOneUser(id: string): Observable<IUser> {
+    return this.http.get<IUser>(`${this.server_URL}/${id}`);
   }
 
   public searchUser(query: string): Observable<IResponse> {
