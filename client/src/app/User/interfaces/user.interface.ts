@@ -18,6 +18,7 @@ export interface IProfile {
   bio: string;
   jobTitle: string;
   userID: string;
+  createdAt: string | Date;
 }
 
 export interface IUserCountry {

@@ -21,6 +21,7 @@ import {
 } from 'src/app/User/store/selectors';
 import { GetOneUser } from 'src/app/User/store/actions';
 import { Location } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile-container',
@@ -42,7 +43,8 @@ export class ProfileContainerComponent implements OnInit {
     private profileStore: Store<{ profile: ProfileState }>,
     private userStore: Store<{ userDetails: UserState }>,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private titleService: Title
   ) {
     this.profileStore.select(selectProfileData).subscribe((data: IProfile) => {
       this.profile = data;
@@ -54,6 +56,9 @@ export class ProfileContainerComponent implements OnInit {
       if (data) {
         this.userStore.dispatch(
           LoadUSerCountry({ countryName: data.nationality })
+        );
+        this.titleService.setTitle(
+          `Profile - ${data.firstName} ${data.lastName} `
         );
       }
     });

@@ -6,3 +6,11 @@ ul {
 .lines {
   border-bottom: 1px solid var(--dark-body-03);
 }
+
+.flag {
+  width: 6%;
+}
+
+.bord {
+  border: 1px solid white;
+}
