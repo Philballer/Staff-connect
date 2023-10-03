@@ -1,12 +1,20 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { IProfile, IUser } from 'src/app/User/interfaces/user.interface';
+import { IDateDisplayer } from 'src/app/shared-components/helpers/date-displayer';
 
 @Component({
   selector: 'app-left-section',
   templateUrl: './left-section.component.html',
   styleUrls: ['./left-section.component.css'],
 })
-export class LeftSectionComponent {
+export class LeftSectionComponent implements OnChanges {
   @Input()
   public profile: IProfile;
 
@@ -33,7 +41,11 @@ export class LeftSectionComponent {
 
   public isFriend: boolean = false;
 
+  public profileCreationDay: IDateDisplayer;
+
   constructor() {}
+
+  public ngOnChanges(changes: SimpleChanges): void {}
 
   public toggleFriendship(command: string): void {
     this.onFriendButtonClick.emit({ command: command, id: this.profile._id });

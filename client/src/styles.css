@@ -77,12 +77,12 @@ body {
   color: var(--primary-01);
 }
 
-.clickable {
+.clickabler {
   cursor: pointer;
   transition: all 70ms ease-in;
 }
 
-.clickable:active {
+.clickabler:active {
   transform: scale(0.92);
 }
 

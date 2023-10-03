@@ -3,21 +3,29 @@
   class="container p-4 bg-03"
 >
   <div class="d-flex flex-column">
-    <span class="lines p-3 mb-2">
-      <i class="fa-solid fa-user me-4 text-purp"></i>
-      <span class="me-2">Name:</span>
+    <span class="lines p-3 mb-3">
+      <span class="p-2">
+        <i class="fa-solid fa-user me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Name:</span>
       <span class="h6"
         >{{ userDetails.firstName }} {{ userDetails.lastName }}</span
       >
     </span>
-    <span class="lines p-3 mb-2">
-      <i class="fa-solid fa-at me-4 text-purp mb-2"></i>
-      <span class="me-2">Email:</span>
+
+    <span class="lines p-3 mb-3">
+      <span class="p-2">
+        <i class="fa-solid fa-at me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Email:</span>
       <span class="h6">{{ profile.email }}</span>
     </span>
-    <span class="lines p-3 mb-2">
-      <i class="fa-solid fas fa-birthday-cake me-4 text-purp mb-2"></i>
-      <span class="me-2">Birthday:</span>
+
+    <span class="lines p-3 mb-3">
+      <span class="p-2">
+        <i class="fa-solid fas fa-birthday-cake me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Birthday:</span>
       <span class="h6">
         <span class="">{{ ageDetails.day }}</span>
         <span class="me-1 suffix">{{ ageDetails.suffix }}</span>
@@ -25,21 +33,44 @@
         <span class="me-1">{{ ageDetails.year }}</span>
       </span>
     </span>
-    <span class="lines p-3 mb-2">
-      <i class="fa-solid fas fa-venus-mars me-4 text-purp mb-2"></i>
-      <span class="me-2">Gender:</span>
+
+    <span class="lines p-3 mb-3">
+      <span class="p-1">
+        <i class="fa-solid fas fa-venus-mars me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Gender:</span>
       <span class="h6">{{ userDetails.gender }}</span>
     </span>
-    <span class="lines p-3 mb-2">
-      <i class="fa-solid fa-house me-4 text-purp mb-2"></i>
-      <span class="me-2">Address:</span>
+
+    <span class="lines p-3 mb-3">
+      <span class="p-1">
+        <i class="fa-solid fa-house me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Address:</span>
       <span class="h6">{{ userDetails.address }}</span>
     </span>
 
-    <span class="lines p-3 mb-2">
-      <i class="fa-solid fa-location-dot me-4 text-purp mb-2"></i>
-      <span class="me-2">Nationality:</span>
-      <span class="h6">{{ userDetails.nationality }}</span>
+    <span class="lines p-3 mb-3">
+      <span class="p-2">
+        <i class="fa-solid fa-location-dot me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Nationality:</span>
+      <span class="h6 m-0 h-100">{{ userDetails.nationality }} </span>
+      <span class="p-1">
+        <img
+          class="img-fluid flag ms-2"
+          src="{{ countryDetails.flags.png }}"
+          alt="{{ countryDetails.flag }}"
+        />
+      </span>
+    </span>
+
+    <span class="lines p-3 mb-3">
+      <span class="p-2">
+        <i class="fa-solid fa-book me-4 text-purp fs-5"></i>
+      </span>
+      <span class="me-2 text-purp h6">Bio:</span>
+      <span class="h6 bord">{{ profile.bio }}</span>
     </span>
   </div>
 </div>

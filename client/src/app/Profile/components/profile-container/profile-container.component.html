@@ -17,11 +17,10 @@
           [user$]="userDetails$"
           [isProfileLoading]="loading$ | async"
           [isUserDetailsLoading]="userDetailsLoading$ | async"
+          [countryDetails]="userCountryDetails$ | async"
         ></app-personal-info>
       </div>
-      <div class="bg-06 p-2">
-        <app-company-info></app-company-info>
-      </div>
+      <div class="bg-06 p-2"></div>
     </div>
   </div>
 </div>
@@ -31,6 +30,3 @@
     <app-spinner></app-spinner>
   </div>
 </ng-template>
-
-<pre>{{ userDetails$ | async | json }}</pre>
-<pre>{{ profile | json }}</pre>

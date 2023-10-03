@@ -8,26 +8,27 @@
   <tr [class.opacity-0]="dataLoading" *ngFor="let user of data; let i = index">
     <td (click)="userClick(user)" class="clickable image-cell">
       <img
-        *ngIf="user.gender === 'Male'; else female"
         class="w-50"
         src="{{ user.avatar ? user.avatar : stockImageMale }}"
         alt=""
       />
     </td>
 
-    <td (click)="userClick(user)" class="clickable">
+    <td (click)="userClick(user)" class="clickable fs-6">
       {{ user.firstName }} {{ user.lastName }}
     </td>
-    <td (click)="userClick(user)" class="clickable">
+    <td (click)="userClick(user)" class="clickable fs-6">
       {{ user.profile.email }}
     </td>
-    <td (click)="userClick(user)" class="clickable">
+    <td (click)="userClick(user)" class="clickable fs-6">
       {{ user.gender }}
     </td>
-    <td (click)="userClick(user)" class="clickable">
+    <td (click)="userClick(user)" class="clickable fs-6">
       {{ readableBirthdays[i] }}
     </td>
-    <td (click)="userClick(user)" class="clickable">{{ user.nationality }}</td>
+    <td (click)="userClick(user)" class="clickable fs-6">
+      {{ user.nationality }}
+    </td>
     <td>
       <app-base-icon
         (click)="deleteUser(user)"

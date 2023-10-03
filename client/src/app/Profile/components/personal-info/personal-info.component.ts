@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProfile, IUser } from 'src/app/User/interfaces/user.interface';
+import {
+  IProfile,
+  IUser,
+  IUserCountry,
+} from 'src/app/User/interfaces/user.interface';
 import { Observable, of } from 'rxjs';
 import {
   IDateDisplayer,
@@ -20,6 +24,9 @@ export class PersonalInfoComponent implements OnInit {
 
   @Input()
   public userDetails: IUser;
+
+  @Input()
+  public countryDetails: IUserCountry;
 
   @Input()
   public isProfileLoading: boolean = false;
