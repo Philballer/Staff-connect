@@ -1,3 +1,9 @@
 .w-bord {
   border: 1px solid white;
 }
+
+@media only screen and (max-width: 1500px) {
+  .left {
+    min-height: 90%;
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "users-list-full-stack",
+  "name": "staff-connect",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,8 @@
     "start:docker": "cd builds && docker-compose up -d",
     "stop:docker": "cd builds && docker-compose down",
     "build:docker": "cd backend &&  docker build -t backend-staffconnect .",
-    "setup": "npm install -g yarn && npm run build:docker  && npm run start:docker && && npm run install:modules",
-    "setup:new": "npm install -g @angular/cli && np && npm run setup",
+    "setup": "npm install -g yarn && npm run build:docker  && npm run start:docker && npm run install:modules",
+    "setup:new": "npm install -g @angular/cli && npm run setup",
     "log:backend": "docker logs -f backend-staffconnect"
   },
   "keywords": [],
