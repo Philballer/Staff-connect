@@ -1,6 +1,6 @@
 .header-container {
   border: 3px solid var(--primary);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background-color: var(--primary);
 }
 
