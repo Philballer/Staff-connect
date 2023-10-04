@@ -6,7 +6,7 @@ import { IDeleteResponse } from 'src/app/User/services/user.service';
 
 @Injectable()
 export class ProfileService {
-  private base_URL = 'http://localhost:5000/api/profiles';
+  private base_URL = 'http://localhost:5500/api/profiles';
 
   constructor(private http: HttpClient) {}
 

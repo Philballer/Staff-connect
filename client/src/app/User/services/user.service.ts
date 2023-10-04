@@ -18,7 +18,7 @@ export interface IDeleteResponse {
 
 @Injectable()
 export class UserService {
-  private server_URL = 'http://localhost:5000/api/users';
+  private server_URL = 'http://localhost:5500/api/users';
 
   constructor(private http: HttpClient) {}
 
