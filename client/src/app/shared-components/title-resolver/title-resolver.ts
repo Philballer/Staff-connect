@@ -16,6 +16,6 @@ export const titleResolver: ResolveFn<string> = (
 export enum TitleEnum {
   Home = 'Staff Connect - Home',
   About = 'Staff Connect - About',
-  NotFound = 'Staff Connect - Page not found',
+  NotFound = 'Staff Connect - Error 404 Page not found',
   Search = 'Staff Connect - Search',
 }
