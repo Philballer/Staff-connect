@@ -18,4 +18,5 @@ export enum TitleEnum {
   About = 'Staff Connect - About',
   NotFound = 'Staff Connect - Error 404 Page not found',
   Search = 'Staff Connect - Search',
+  Login = 'Staff Connect - login or sing up',
 }

@@ -5,10 +5,8 @@ import { UserListComponent } from './User/components/user-list/user-list.compone
 import { AboutComponent } from './shared-components/about/about.component';
 import { ProfileContainerComponent } from './Profile/components/profile-container/profile-container.component';
 import { PageNotFoundComponent } from './shared-components/page-not-found/page-not-found.component';
-import {
-  TitleEnum,
-  titleResolver,
-} from './shared-components/title-resolver/title-resolver';
+import { TitleEnum } from './shared-components/title-resolver/title-resolver';
+import { AuthRoutingModule } from './Auth/auth-routing.module';
 
 const homeChildrenRoutes: Routes = [
   {
@@ -36,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), AuthRoutingModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
