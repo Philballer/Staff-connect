@@ -22,6 +22,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .user-image {
   border-radius: 50%;
   height: 13%;
@@ -66,12 +70,18 @@ body {
 .bg-06 {
   background-color: var(--dark-body-06);
 }
+
+.border-radius-06 {
+  border: 1px solid var(--dark-body-06);
+  border-radius: 10px;
+}
+
 .bg-03 {
   background-color: var(--dark-body-04);
 }
 
 .bg-purp {
-  background-color: var(--primary);
+  background-color: var(--primary-01);
 }
 .text-purp {
   color: var(--primary-01);
@@ -95,13 +105,6 @@ body {
 
 .border {
   border: 1px solid white;
-}
-
-.box {
-  margin: 0 50%;
-  height: 100px;
-  width: 100px;
-  background-color: #5bc0de;
 }
 
 @media only screen and (max-width: 1500px) {

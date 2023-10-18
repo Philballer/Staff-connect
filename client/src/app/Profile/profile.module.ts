@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from './store/effects';
 import { ProfileService } from './services/profile.services';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { FriendsListThumbnailsComponent } from './components/friends-list-thumbnails/friends-list-thumbnails.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
     ProfileContainerComponent,
     PersonalInfoComponent,
     LeftSectionComponent,
+    FriendsListThumbnailsComponent,
   ],
   providers: [ProfileService],
   exports: [StoreModule],

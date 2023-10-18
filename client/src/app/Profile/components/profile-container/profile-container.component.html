@@ -1,5 +1,5 @@
-<div *ngIf="!(loading$ | async); else spinner" class="container h-75 left">
-  <div class="row h-100 text-light gap-5">
+<div *ngIf="!(loading$ | async); else spinner" class="container">
+  <div class="row h-100 d-flex justify-content-around text-light">
     <div class="col-4 h-100 text-center bg-06">
       <app-left-section
         [profile]="profile"
@@ -20,7 +20,13 @@
           [countryDetails]="userCountryDetails$ | async"
         ></app-personal-info>
       </div>
-      <div class="bg-06 p-2"></div>
+      <div class="bg-06 p-2">
+        <app-friends-list-thumbnails
+          [isLoading]="userDetailsLoading$ | async"
+          [userDetails]="userDetails$ | async"
+          (addFriendClicked)="onFriendButtonClick($event)"
+        ></app-friends-list-thumbnails>
+      </div>
     </div>
   </div>
 </div>

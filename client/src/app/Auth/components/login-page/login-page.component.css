@@ -1,0 +1,40 @@
+.box {
+  border: 1px solid white;
+}
+
+.h1 {
+  font-size: 3.6rem;
+}
+
+.lead {
+  font-size: x-large;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.login {
+  box-shadow: 0 2px 8px rgba(8, 8, 8, 0.518);
+}
+
+input::placeholder {
+  font-size: large;
+}
+
+.bg-purp:hover {
+  background-color: var(--primary-01);
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.ledger {
+  border-top: 1px solid var(--dark-body-03);
+}
+
+@media only screen and (min-width: 1500px) {
+  .login {
+    width: 86%;
+  }
+}

@@ -1,0 +1,63 @@
+<div class="container h-100">
+  <div class="text-light h-100 p-5">
+    <div class="row h-50 mt-lg-5">
+      <!-- Header Column -->
+      <div class="col-lg py-5 px-3 mt-5 text-center text-lg-start">
+        <p class="h1 text-purp mt-5">Staff Connect</p>
+        <p class="lead me-1">Connect and share with the people at work.</p>
+      </div>
+
+      <!-- Login component -->
+      <div class="col-lg h-100 mt-lg-5">
+        <div class="p-md-3 px-xxl-5 h-100">
+          <div class="bg-06 border-radius-06 login px-3 py-4">
+            <form (submit)="loginUser()">
+              <div class="mb-4 input-group-lg">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Email address or username"
+                  name="username"
+                  [(ngModel)]="loginForm.usernameOrEmail"
+                  #login
+                />
+                <div id="emailHelp" class="form-text"></div>
+              </div>
+              <div class="mb-3 input-group-lg">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  name="password"
+                  [(ngModel)]="loginForm.password"
+                />
+                <div id="emailHelp" class="form-text"></div>
+              </div>
+
+              <button class="btn bg-purp btn-lg w-100 mt-2 mb-3" type="submit">
+                <span class="text-light h5">Log in</span>
+              </button>
+            </form>
+
+            <!-- Others after form -->
+            <a class="text-purp" href="#">
+              <span class="d-flex justify-content-center mb-4"
+                >Forgotten password?</span
+              >
+            </a>
+            <div class="pt-4 px-5 d-flex justify-content-center ledger">
+              <button
+                class="btn bg-success btn-lg w-75 mt-2 mb-2"
+                type="submit"
+              >
+                <span class="text-light h-5">Create new account</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

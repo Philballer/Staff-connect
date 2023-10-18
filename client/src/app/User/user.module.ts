@@ -46,18 +46,12 @@ import { reducer } from './store/reducer';
   ],
   providers: [UserService],
   exports: [
-    UserListComponent,
-    UserInfoComponent,
-    UserListContainerComponent,
     MatDialogModule,
-    AddUserModalComponent,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    FormsModule,
     ReactiveFormsModule,
-    StoreModule,
   ],
 })
 export class UserModule {}
