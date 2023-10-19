@@ -14,12 +14,12 @@
   background-color: yellow;
 }
 
-.next {
-  height: 85vh;
+/* .next {
+  height: 87vh;
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1500px) {
   .next {
-    height: 120vh;
+    height: 133vh;
   }
-}
+} */

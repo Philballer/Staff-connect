@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark navbar-expand-sm bg-navbar mb-5">
-  <div class="container">
+  <div class="container d-flex justify-content-between">
     <a href="/" class="navbar-brand">
       <i class="fa-solid fa-cubes"></i>
       Staff Connect
@@ -7,7 +7,6 @@
 
     <div class="d-flex">
       <a routerLink="/home" class="btn btn-outline-light">Home</a>
-      <a routerLink="/profile" class="btn btn-outline-light ms-3">Profile</a>
 
       <div class="dropdown ms-3 d-flex align-items-center">
         <a
@@ -21,9 +20,9 @@
         </a>
 
         <ul class="dropdown-menu dropdown-style">
-          <li><a class="dropdown-item" routerLink="/login">Login</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/about">About</a></li>
+          <li><a class="dropdown-item" routerLink="/login">Logout</a></li>
         </ul>
       </div>
     </div>

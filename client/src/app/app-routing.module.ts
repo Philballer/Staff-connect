@@ -7,6 +7,7 @@ import { ProfileContainerComponent } from './Profile/components/profile-containe
 import { PageNotFoundComponent } from './shared-components/page-not-found/page-not-found.component';
 import { TitleEnum } from './shared-components/title-resolver/title-resolver';
 import { AuthRoutingModule } from './Auth/auth-routing.module';
+import { ProfileRoutingModule } from './Profile/profile-routing.module';
 
 const homeChildrenRoutes: Routes = [
   {
@@ -26,15 +27,15 @@ const routes: Routes = [
     title: TitleEnum.Home,
   },
   { path: 'about', component: AboutComponent, title: TitleEnum.About },
-  {
-    path: 'profile/:id',
-    component: ProfileContainerComponent,
-  },
   { path: '**', component: PageNotFoundComponent, title: TitleEnum.NotFound },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), AuthRoutingModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    AuthRoutingModule,
+    ProfileRoutingModule,
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
