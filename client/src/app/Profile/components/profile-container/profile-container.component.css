@@ -2,12 +2,24 @@
   border: 1px solid white;
 }
 
-.container {
+/* .container {
   height: 85%;
+} */
+
+.red {
+  background-color: red;
 }
 
-/* @media only screen and (max-width: 1500px) {
-  .left {
-    min-height: 90%;
+.yellow {
+  background-color: yellow;
+}
+
+.next {
+  height: 85vh;
+}
+
+@media only screen and (max-width: 1600px) {
+  .next {
+    height: 120vh;
   }
-} */
+}
