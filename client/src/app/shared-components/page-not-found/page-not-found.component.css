@@ -1,7 +1,17 @@
-.box1 {
-  background-color: aliceblue;
+.error {
+  font-size: 11.7rem;
 }
 
-.box2 {
-  background-color: aquamarine;
+.error-msg {
+  font-size: 2rem;
+}
+
+.btn:hover {
+  color: var(--primary);
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn:active {
+  transform: scale(0.98);
 }

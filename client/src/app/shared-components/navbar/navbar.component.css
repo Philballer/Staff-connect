@@ -33,3 +33,10 @@
   background-color: var(--primary);
   transition: all 0.3s ease-in;
 }
+
+img {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.85);
+  border-radius: 50%;
+  width: 5%;
+  cursor: pointer;
+}

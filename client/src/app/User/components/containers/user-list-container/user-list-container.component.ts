@@ -60,6 +60,7 @@ export class UserListContainerComponent implements OnInit, OnDestroy {
   public onUserListClick(user: IUser): void {
     this.router.navigate([`/profile/${user.profile._id}`], { state: user });
     //passed the user as a state here
+    // state does not work, still have to fetch the id from the route on init
   }
 
   public onUserSearch(searchValue: string): void {
