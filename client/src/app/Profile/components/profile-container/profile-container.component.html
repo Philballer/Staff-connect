@@ -1,6 +1,6 @@
 <div *ngIf="!(loading$ | async); else spinner" class="container">
-  <div class="row h-100 d-flex justify-content-around text-light">
-    <div class="col-4 h-100 text-center bg-06">
+  <div class="d-flex justify-content-around text-light">
+    <div class="col-4 bg-06 text-center">
       <app-left-section
         [profile]="profile"
         [detailsLoading]="userDetailsLoading$ | async"
@@ -10,7 +10,7 @@
         (onGoBackClick)="onGoBackClick()"
       ></app-left-section>
     </div>
-    <div class="col-7 h-100 d-flex flex-column justify-content-between">
+    <div class="col-7 d-flex flex-column justify-content-between next">
       <div class="bg-06 p-2">
         <app-personal-info
           [profile]="profile"

@@ -31,3 +31,7 @@ img {
 .clickbar {
   cursor: pointer;
 }
+
+.friend-box {
+  border: 1px solid var(--dark-body-03);
+}
