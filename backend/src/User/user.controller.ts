@@ -75,6 +75,22 @@ export class UserController {
     return this.userService.updateById(id, user);
   }
 
+  @Put('add-friend/:id/:friendId')
+  async addFriend(
+    @Param('id') id: string,
+    @Param('friendId') friendId: string,
+  ): Promise<User> {
+    return this.userService.addFriendById('add', id, friendId);
+  }
+
+  @Put('delete-friend/:id/:friendId')
+  async deleteFriend(
+    @Param('id') id: string,
+    @Param('friendId') friendId: string,
+  ): Promise<User> {
+    return this.userService.addFriendById('delete', id, friendId);
+  }
+
   //* Not more allowed to delete from this endpoint. Delete would take place in the Profile-delete-endpoint
 
   // @Delete(':id')

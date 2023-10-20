@@ -28,6 +28,9 @@ export class User {
   @Prop()
   isAdmin: boolean;
 
+  @Prop({ unique: true })
+  friends: string[];
+
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Profile' })
   profile: Profile;
 }
