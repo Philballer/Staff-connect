@@ -116,6 +116,36 @@ export class UserService {
     return this.userModel.findByIdAndUpdate(id, userData, queryOptions);
   }
 
+  public async addFriendById(
+    command: string,
+    id: string,
+    friendsId: string,
+  ): Promise<User> {
+    const queryOptions = {
+      new: true,
+      runValidators: true,
+    };
+
+    const user = await this.userModel.findById(id);
+    if (!user) throw new NotFoundException('User not found');
+
+    switch (command) {
+      case 'add':
+        user.friends.push(friendsId);
+        break;
+
+      case 'delete': {
+        if (!user.friends.includes(friendsId)) {
+          throw new NotFoundException('Friend not found');
+        }
+        user.friends = user.friends.filter((x) => x !== friendsId);
+        break;
+      }
+    }
+
+    return this.userModel.findByIdAndUpdate(id, user, queryOptions);
+  }
+
   public async deleteById(id: string): Promise<deleteMessage> {
     const user = await this.userModel.findById(id);
     if (!user) throw new NotFoundException('User not found');
