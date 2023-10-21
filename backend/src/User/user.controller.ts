@@ -9,6 +9,7 @@ import {
   Query,
   UseInterceptors,
   UploadedFile,
+  Request,
 } from '@nestjs/common';
 import { UserService } from './service/user.service';
 import { User } from './schemas/user.schema';
@@ -21,6 +22,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { Request as ExpressRequest } from 'express';
 
 @Controller('api/users')
 export class UserController {
@@ -89,6 +91,11 @@ export class UserController {
     @Param('friendId') friendId: string,
   ): Promise<User> {
     return this.userService.addFriendById('delete', id, friendId);
+  }
+
+  @Post('test')
+  public async doSomething(@Request() request: ExpressRequest): Promise<void> {
+    console.log(request.body);
   }
 
   //* Not more allowed to delete from this endpoint. Delete would take place in the Profile-delete-endpoint

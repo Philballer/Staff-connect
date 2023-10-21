@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { MulterModule } from '@nestjs/platform-express';
 import { ProfileModule } from './Profile/profile.module';
+import { AuthModule } from './Auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProfileModule } from './Profile/profile.module';
     MulterModule.register({ dest: './uploads' }),
     UserModule,
     ProfileModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [],

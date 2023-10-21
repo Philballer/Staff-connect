@@ -14,6 +14,7 @@ import { User } from 'src/User/schemas/user.schema';
 import { IProfileUserUnion } from './interfaces/ProfileUserUnion.interface';
 import { UpdateUserDto } from 'src/User/dto/user.dto';
 import { deleteMessage } from 'src/User/helper/user.helpers';
+import { AuthService } from 'src/Auth/auth.service';
 
 @Injectable()
 export class ProfileService {
@@ -24,20 +25,35 @@ export class ProfileService {
     private profileModel: mongoose.Model<Profile>,
     @InjectModel(User.name)
     private userModel: mongoose.Model<User>,
+
+    private authService: AuthService,
   ) {}
 
   public async getOne(id: string): Promise<Profile> {
     const profile = await this.profileModel.findById(id);
     if (!profile) throw new NotFoundException('User not found');
-    return profile;
+    const newProfile = { ...profile.toObject() };
+    delete newProfile.password;
+    return newProfile;
     //.populate('userID) if i want to eagerly load
   }
 
   public async create(profile: CreateProfileDto): Promise<Profile> {
     const isValidProfile = this.isValidCreateProfileDto(profile);
     if (!isValidProfile) throw new BadRequestException('Invalid user data');
+
     try {
-      return await this.profileModel.create(profile);
+      const newProfile: CreateProfileDto = {
+        ...profile,
+        password: await this.authService.hashPassword(profile.password),
+      };
+
+      const createdProfile = await this.profileModel.create(newProfile);
+
+      const profileWithoutPassword: Profile = { ...createdProfile.toObject() };
+      delete profileWithoutPassword.password;
+
+      return profileWithoutPassword;
     } catch (error) {
       const newError = {
         message: 'Duplicate key Error',
@@ -100,10 +116,11 @@ export class ProfileService {
   }
 
   public async deleteProfile(id: string): Promise<deleteMessage> {
-    const profile = this.getOne(id);
+    const profile = await this.getOne(id);
     if (!profile) throw new NotFoundException('Profile not Found');
     try {
       await this.profileModel.findByIdAndDelete(id);
+      await this.userModel.findByIdAndDelete(profile.userID);
     } catch (error) {
       throw new HttpException(`${error}`, HttpStatus.BAD_REQUEST);
     }
