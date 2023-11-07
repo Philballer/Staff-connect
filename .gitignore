@@ -7,4 +7,4 @@ client/.coverage
 
 .vscode
 
-backend/.env
+/backend/.env

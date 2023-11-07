@@ -15,7 +15,7 @@ import {
   styleUrls: ['./searchbar.component.css'],
 })
 export class SearchbarComponent implements OnInit, OnDestroy {
-  @ViewChild('inputElement')
+  @ViewChild('inputElement', { static: true })
   inputElement: ElementRef;
 
   @Input()
@@ -31,9 +31,7 @@ export class SearchbarComponent implements OnInit, OnDestroy {
   public noEntry: boolean = true;
 
   public ngOnInit(): void {
-    setTimeout(() => {
-      this.inputElement.nativeElement.focus();
-    }, 50);
+    this.inputElement.nativeElement.focus();
   }
 
   public ngOnDestroy(): void {
