@@ -3,7 +3,8 @@ import { SearchbarComponent } from './searchbar.component';
 import { BaseIconComponent } from '../base-icon/base-icon.component';
 import { FormsModule } from '@angular/forms';
 
-fdescribe('SearchbarComponent', () => {
+
+describe('SearchbarComponent', () => {
   let spectator: Spectator<SearchbarComponent>;
   let searchInput: HTMLElement;
   let inputIcon: HTMLElement;
@@ -41,5 +42,8 @@ fdescribe('SearchbarComponent', () => {
 
     expect(inputIcon).toBeTruthy();
     expect(inputIconPending).toBeFalsy();
+
   });
+
+  // it('should focus on the input element upon initialization of the component', () => {});
 });

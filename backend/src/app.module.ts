@@ -7,7 +7,6 @@ import { ConfigModule } from '@nestjs/config';
 import { MulterModule } from '@nestjs/platform-express';
 import { ProfileModule } from './Profile/profile.module';
 import { AuthModule } from './Auth/auth.module';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,3 +23,5 @@ import { AuthModule } from './Auth/auth.module';
   providers: [],
 })
 export class AppModule {}
+
+//hello

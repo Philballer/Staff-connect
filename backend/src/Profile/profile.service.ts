@@ -16,6 +16,7 @@ import { UpdateUserDto } from 'src/User/dto/user.dto';
 import { deleteMessage } from 'src/User/helper/user.helpers';
 import { AuthService } from 'src/Auth/auth.service';
 
+
 @Injectable()
 export class ProfileService {
   private readonly logger = new Logger(ProfileService.name);
@@ -25,7 +26,6 @@ export class ProfileService {
     private profileModel: mongoose.Model<Profile>,
     @InjectModel(User.name)
     private userModel: mongoose.Model<User>,
-
     private authService: AuthService,
   ) {}
 
@@ -35,6 +35,7 @@ export class ProfileService {
     const newProfile = { ...profile.toObject() };
     delete newProfile.password;
     return newProfile;
+
     //.populate('userID) if i want to eagerly load
   }
 
@@ -121,6 +122,7 @@ export class ProfileService {
     try {
       await this.profileModel.findByIdAndDelete(id);
       await this.userModel.findByIdAndDelete(profile.userID);
+
     } catch (error) {
       throw new HttpException(`${error}`, HttpStatus.BAD_REQUEST);
     }
