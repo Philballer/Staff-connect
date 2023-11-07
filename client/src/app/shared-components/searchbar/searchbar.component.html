@@ -15,18 +15,21 @@
     <div class="d-flex justify-content-center align-items-center h-100">
       <app-base-icon
         data-testid="inputIconDefault"
-        *ngIf="!loading"
+        *ngIf="!loading; else spinner"
+
         iconClass=" fa-solid text-light fa-magnifying-glass"
         toolTip="Search for a unique Staff"
         (click)="handleInput()"
       ></app-base-icon>
-
-      <app-base-icon
-        data-testid="inputIconLoading"
-        *ngIf="loading"
-        iconClass="fas fa-circle-notch fa-spin text-light"
-      >
-      </app-base-icon>
     </div>
   </div>
 </div>
+
+<ng-template #spinner>
+  <app-base-icon
+    data-testid="inputIconLoading"
+    iconClass="fas fa-circle-notch fa-spin text-light"
+    data-testid="inputIconSpinner"
+  >
+  </app-base-icon>
+</ng-template>

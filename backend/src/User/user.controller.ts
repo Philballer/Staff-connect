@@ -9,6 +9,9 @@ import {
   Query,
   UseInterceptors,
   UploadedFile,
+
+  Request,
+
 } from '@nestjs/common';
 import { UserService } from './service/user.service';
 import { User } from './schemas/user.schema';
@@ -21,6 +24,8 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { Request as ExpressRequest } from 'express';
+
 
 @Controller('api/users')
 export class UserController {
@@ -48,7 +53,8 @@ export class UserController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './avatars',
+        destination: './uploads/profileAvatars',
+
         filename: (req, file, callback) => {
           const uniqueSuffix =
             Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -62,7 +68,8 @@ export class UserController {
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
     console.log('file', file);
     const relativePath = file.path;
-    const baseUrl = 'http://localhost:5000/users';
+    const baseUrl = 'http://localhost:5000/api/users';
+
     const completeUrl = new URL(relativePath, baseUrl);
     return completeUrl;
   }
@@ -89,6 +96,12 @@ export class UserController {
     @Param('friendId') friendId: string,
   ): Promise<User> {
     return this.userService.addFriendById('delete', id, friendId);
+  }
+
+  @Post('test')
+  public async doSomething(@Request() request: ExpressRequest): Promise<void> {
+    console.log(request.body);
+
   }
 
   //* Not more allowed to delete from this endpoint. Delete would take place in the Profile-delete-endpoint
