@@ -39,7 +39,7 @@ Note: Always create a new branch from the develop branch.
 
 3. npm run install
 
-4. start the app with: npm start
+4. start the app with: npm run start
 
 ###########################################
 
